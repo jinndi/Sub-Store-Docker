@@ -8,7 +8,7 @@
 
 Официальный репозиторий: https://github.com/sub-store-org/Sub-Store
 
-# Быстрый старт
+## Быстрый старт
 
 1. Для начала установите на сервер Docker (вместе с Docker Compose) с помощью команды:
 
@@ -19,7 +19,7 @@ sudo usermod -aG docker $(whoami)
 
 2. Ниже приведён пример файла `compose.yml` для развёртывания панели `Sub-Store` за реверс-прокси `Caddy` с автоматически продлеваемыми SSL-сертификатами:
 
-```
+```yaml
 services:
   sub-store:
     image: xream/sub-store:http-meta
@@ -50,7 +50,7 @@ services:
       # Укажите свой домен, или поддомен
       DOMAIN: "mysub.duckdns.org"
       # Укажите свой e-mail для ACME
-      EMAIL: "alncores@gmail.com"
+      EMAIL: "mymail@gmail.com"
       # Тут ссылаемся на сервис sub-store с портом бэка+фронта
       PROXY_ROOT: "sub-store:3001"
     ports:
@@ -89,21 +89,11 @@ nano compose.yml
 https://mysub.duckdns.org?api=https://mysub.duckdns.org/jfDud83kfDlo0kDewc
 ```
 
-Либо просто перейдите по адресу:
-
-```text
-https://mysub.duckdns.org
-```
-
-и укажите путь к Backend API вручную. В данном примере это:
-
-```text
-/jfDud83kfDlo0kDewc
-```
+Либо просто перейдите по адресу: `https://mysub.duckdns.org` и укажите путь к Backend API вручную. В данном примере это: `/jfDud83kfDlo0kDewc`
 
 Все доступные параметры и переменные окружения можно найти на странице Docker Hub: https://hub.docker.com/r/xream/sub-store
 
-### Пример управления сервисами
+## Пример управления сервисами
 
 * Запустить/перезагрузить:
 
