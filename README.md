@@ -58,6 +58,9 @@ services:
       - 80:80/tcp
       - 443:443/tcp
       - 443:443/udp
+      # Если 443 порт занят, можно указать вместо него другой так:
+      # - 1443:443/tcp
+      # - 1443:443/udp
     volumes:
       - caddy_data:/data
       - caddy_config:/config
