@@ -121,4 +121,4 @@ docker compose pull
 ```
 docker compose down --rmi all
 ```
-довавив ключ `-v` так же удалит данные (`volumes`)
+добавив ключ `-v` так же удалит данные (`volumes`)
