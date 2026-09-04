@@ -30,6 +30,8 @@ services:
     environment:
       # Укажите тут свои уникальный набор символов после косой черты:
       SUB_STORE_FRONTEND_BACKEND_PATH: /jfDud83kfDlo0kDewc
+      # Ваш домен Sub-Store для защиты CORS, можно указать * (все домены, но не стоит)
+      SUB_STORE_CORS_ALLOWED_ORIGINS: https://mysub.ydns.eu
       # Длее ничего можно не менять.
       SUB_STORE_BACKEND_API_HOST: 0.0.0.0
       SUB_STORE_BACKEND_API_PORT: 3001
