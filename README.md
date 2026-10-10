@@ -19,7 +19,7 @@ curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker $(whoami)
 ```
 
-2. Ниже приведён пример файла `compose.yml` для развёртывания панели `Sub-Store` за реверс-прокси `Caddy` с автоматически продлеваемыми SSL-сертификатами:
+2. Ниже приведён пример файла `compose.yml` для развёртывания панели `Sub-Store` за реверс-прокси `Caddy` с автоматически продлеваемыми SSL-сертификатами на VPS сервере:
 
 ```yaml
 services:
@@ -105,6 +105,37 @@ https://mysub.ydns.eu?api=https://mysub.ydns.eu/jfDud83kfDlo0kDewc
 Либо просто перейдите по адресу: `https://mysub.ydns.eu` и укажите путь к Backend API вручную. В данном примере это: `/jfDud83kfDlo0kDewc`
 
 Все доступные параметры и переменные окружения можно найти на странице Docker Hub: https://hub.docker.com/r/xream/sub-store
+
+### Развертывание на локальной машине
+
+Используейте слудующий `compose.yml` файл:
+
+```yaml
+name: sub-store
+
+services:
+  sub-store:
+    image: xream/sub-store:http-meta
+    container_name: sub-store
+    restart: unless-stopped
+    environment:
+      SUB_STORE_FRONTEND_BACKEND_PATH: /
+      SUB_STORE_CORS_ALLOWED_ORIGINS: '*'
+      SUB_STORE_BACKEND_API_HOST: 0.0.0.0
+      SUB_STORE_BACKEND_API_PORT: 3001
+      SUB_STORE_BACKEND_MERGE: true
+    volumes:
+      - sub_store:/opt/app/data
+    networks:
+      - sub_store_net
+    ports:
+      - "10101:3001"
+
+volumes:
+  sub_store:
+```
+
+**Доступ будет по адресу `http://localhost:10101` или, например, по IP-адресу компьютера в сети роутера: `http://192.168.2.15:10101`.**
 
 ## Пример управления сервисами
 
