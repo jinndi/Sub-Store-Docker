@@ -133,6 +133,9 @@ services:
 
 volumes:
   sub_store:
+
+networks:
+  sub_store_net:
 ```
 
 **Доступ будет по адресу `http://localhost:10101` или, например, по IP-адресу компьютера в сети роутера: `http://192.168.2.15:10101`.**
